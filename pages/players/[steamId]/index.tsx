@@ -3,8 +3,8 @@ import Wrapper from '@components/Layout/Wrapper';
 import { PlayersHeader } from '@components/Players';
 import { GetServerSideProps } from 'next';
 
-import client from '../../apolloConfig';
-import { Player_player } from '../../types/Player';
+import client from '../../../apolloConfig';
+import { Player_player } from '../../../types/Player';
 
 interface PlayerProps {
   steamId: string;
@@ -20,7 +20,7 @@ const PlayerProfile: React.FC<PlayerProps> = ({ steamId, player }) => {
 };
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  const steamId = context.params.steamId[0];
+  const steamId = context.query.steamId;
   const path = context.params.steamId;
 
   const { data } = await client.query({
