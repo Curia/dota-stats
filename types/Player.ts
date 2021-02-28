@@ -16,8 +16,6 @@ export interface Player_player_steamAccount {
 
 export interface Player_player {
   __typename: "PlayerType";
-  winCount: number | null;
-  matchCount: number | null;
   steamAccount: Player_player_steamAccount | null;
 }
 

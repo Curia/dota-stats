@@ -2,6 +2,7 @@ import { gql } from '@apollo/client';
 import { Select } from '@chakra-ui/react';
 import Wrapper from '@components/Layout/Wrapper';
 import { PlayersHeader } from '@components/Players';
+import PlayersOverview from '@components/Players/PlayersOverview';
 import { GetServerSideProps } from 'next';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
@@ -16,8 +17,9 @@ interface PlayerProps {
   path: string;
 }
 
-const PlayerProfileRoutes = ({ routes }) => {
+const PlayerProfileRoutes = ({ routes, steamId }) => {
   const [appRoutes, setAppRoutes] = useState(routes);
+  const [livePath, setLivePath] = useState('');
   const router = useRouter();
 
   const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -29,6 +31,7 @@ const PlayerProfileRoutes = ({ routes }) => {
     newState[value].isActive = true;
 
     setAppRoutes([...newState]);
+    setLivePath(appRoutes[value].name);
     router.push(appRoutes[value].path);
   };
   return (
@@ -43,6 +46,12 @@ const PlayerProfileRoutes = ({ routes }) => {
           </option>
         ))}
       </Select>
+      <div>
+        {{
+          Matches: <p>Matches</p>,
+          Heroes: <p>Heroes</p>
+        }[livePath] || <PlayersOverview steamId={steamId} />}
+      </div>
     </div>
   );
 };
@@ -80,7 +89,7 @@ const PlayerProfile: React.FC<PlayerProps> = ({ steamId, player, path }) => {
       </Head>
       <Wrapper>
         <PlayersHeader player={player} steamId={steamId} />
-        <PlayerProfileRoutes routes={routes} />
+        <PlayerProfileRoutes routes={routes} steamId={steamId} />
       </Wrapper>
     </>
   );
