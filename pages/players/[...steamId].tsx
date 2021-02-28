@@ -3,6 +3,7 @@ import { Select } from '@chakra-ui/react';
 import Wrapper from '@components/Layout/Wrapper';
 import { PlayersHeader } from '@components/Players';
 import { GetServerSideProps } from 'next';
+import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 
@@ -47,6 +48,7 @@ const PlayerProfileRoutes = ({ routes }) => {
 };
 
 const PlayerProfile: React.FC<PlayerProps> = ({ steamId, player, path }) => {
+  const { steamAccount } = player;
   const routes = [
     {
       path: `/players/${steamId}`,
@@ -71,10 +73,16 @@ const PlayerProfile: React.FC<PlayerProps> = ({ steamId, player, path }) => {
   });
 
   return (
-    <Wrapper>
-      <PlayersHeader player={player} steamId={steamId} />
-      <PlayerProfileRoutes routes={routes} />
-    </Wrapper>
+    <>
+      <Head>
+        <title>{`${steamAccount.name}: Overview`}</title>
+        <meta property="og:title" content={`${steamAccount.name}: Overview`} key="title" />
+      </Head>
+      <Wrapper>
+        <PlayersHeader player={player} steamId={steamId} />
+        <PlayerProfileRoutes routes={routes} />
+      </Wrapper>
+    </>
   );
 };
 
