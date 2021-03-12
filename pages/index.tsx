@@ -17,6 +17,11 @@ const Index: React.FC<AppProps> = () => {
               <a>Player</a>
             </Link>
           </li>
+          <li>
+            <Link href="/matches/5874521112">
+              <a>Match</a>
+            </Link>
+          </li>
         </ul>
       </main>
     </div>

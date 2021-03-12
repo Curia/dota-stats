@@ -1,5 +1,4 @@
 import { Box, Container } from '@chakra-ui/react';
-
 interface WrapperProps {
   children: React.ReactNode;
 }

@@ -15,7 +15,7 @@ const PlayersHeader: React.FC<PlayersHeaderProps> = ({ steamId, player }) => {
   const avatarPath: string = process.env.NEXT_PUBLIC_AVATAR_PATH + steamAccount.avatar;
 
   return (
-    <Wrapper>
+    <>
       <Flex direction="column">
         <Flex justifyContent="flex-end">
           <LinkButton href={steamAccount.profileUri} text="Steam profile" icon={SiSteam} />
@@ -34,7 +34,7 @@ const PlayersHeader: React.FC<PlayersHeaderProps> = ({ steamId, player }) => {
           </Heading>
         </Center>
       </Flex>
-    </Wrapper>
+    </>
   );
 };
 
