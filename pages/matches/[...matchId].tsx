@@ -14,9 +14,10 @@ interface MatchProps {
 
 const MatchDetails: React.FC<MatchProps> = ({ matchId, match, path }) => {
   const { didRadiantWin } = match;
+
   return (
     <>
-      <MatchHeader didRadiantWin />
+      <MatchHeader didRadiantWin={didRadiantWin} />
     </>
   );
 };
