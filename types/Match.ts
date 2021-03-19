@@ -10,6 +10,7 @@
 export interface Match_match_players {
   __typename: "MatchPlayerType";
   heroId: stratzShort | null;
+  isRadiant: boolean | null;
 }
 
 export interface Match_match {
