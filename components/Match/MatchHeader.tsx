@@ -45,22 +45,38 @@ const MatchHeader: React.FC<PlayersHeaderProps> = ({ didRadiantWin, players }) =
         <Image src={blurPath} sx={backgroundBlur} />
         <Box py="4">
           <Heading as="h2">{didRadiantWin ? 'Radiant Victory' : 'Dire Victory'}</Heading>
-          <Box p={4}>
-            <Flex>
+          <Flex
+            flexDir="column"
+            justifyContent="space-between"
+            p={2}
+            borderRadius="md"
+            mt="2"
+            height="100px"
+            w="250px"
+            sx={{ background: 'rgba(255, 255, 255, 0.04)' }}>
+            <Flex justifyContent="flex-start">
               {radiantHeroes.map((player, i) => {
                 const { heroId } = player;
                 const iconPath = `https://steamcdn-a.akamaihd.net/${heroesConst[heroId].icon}`;
-                return <Image mx={2} key={i} src={iconPath} />;
+                return <Image w="28px" mx={1} key={i} src={iconPath} />;
               })}
             </Flex>
-            <Flex>
+            <Flex marginLeft="auto">
               {direHeroes.map((player, i) => {
                 const { heroId } = player;
                 const iconPath = `https://steamcdn-a.akamaihd.net/${heroesConst[heroId].icon}`;
-                return <Image mx={2} key={i} src={iconPath} />;
+                return (
+                  <Image
+                    w="28px"
+                    mx={1}
+                    key={i}
+                    src={iconPath}
+                    sx={{ 'image-rendering': 'pixelated' }}
+                  />
+                );
               })}
             </Flex>
-          </Box>
+          </Flex>
         </Box>
       </Center>
     </>

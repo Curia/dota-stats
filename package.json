@@ -10,7 +10,9 @@
     "format": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc",
     "pre-commit": "lint-staged",
     "postinstall": "husky install",
-    "generate": "apollo codegen:generate --excludes=node_modules/* --includes=**/*.tsx --endpoint https://api.stratz.com/graphql  --target typescript --tagName gql --outputFlat types --passthroughCustomScalars --customScalarsPrefix stratz"
+    "generate": "apollo codegen:generate --excludes=node_modules/* --includes=**/*.tsx --endpoint https://api.stratz.com/graphql  --target typescript --tagName gql --outputFlat types --passthroughCustomScalars --customScalarsPrefix stratz",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "dependencies": {
     "@apollo/client": "^3.3.11",
@@ -29,12 +31,18 @@
     "styled-components": "^5.2.1"
   },
   "devDependencies": {
+    "@babel/core": "^7.13.15",
     "@babel/plugin-syntax-object-rest-spread": "^7.8.3",
+    "@storybook/addon-actions": "^6.2.7",
+    "@storybook/addon-essentials": "^6.2.7",
+    "@storybook/addon-links": "^6.2.7",
+    "@storybook/react": "^6.2.7",
     "@types/node": "^14.14.28",
     "@types/react": "^17.0.2",
     "@typescript-eslint/eslint-plugin": "^4.15.1",
     "@typescript-eslint/parser": "^4.15.1",
     "axios": "^0.21.1",
+    "babel-loader": "^8.2.2",
     "date-fns": "^2.17.0",
     "eslint": "^7.20.0",
     "eslint-config-prettier": "^7.2.0",
@@ -46,6 +54,7 @@
     "husky": "^5.0.9",
     "lint-staged": "^10.5.4",
     "prettier": "^2.2.1",
+    "storybook-addon-performance": "^0.15.2",
     "typescript": "^4.1.5",
     "undefined": "^0.1.0"
   },
