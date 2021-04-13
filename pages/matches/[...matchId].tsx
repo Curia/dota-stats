@@ -13,11 +13,11 @@ interface MatchProps {
 }
 
 const MatchDetails: React.FC<MatchProps> = ({ matchId, match, path }) => {
-  const { didRadiantWin } = match;
+  const { didRadiantWin, players } = match;
 
   return (
     <>
-      <MatchHeader didRadiantWin={didRadiantWin} />
+      <MatchHeader didRadiantWin={didRadiantWin} players={players} />
     </>
   );
 };
@@ -36,6 +36,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
           endDateTime
           players {
             heroId
+            isRadiant
           }
         }
       }
