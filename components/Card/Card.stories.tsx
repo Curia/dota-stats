@@ -12,6 +12,7 @@ const Template: Story<CardProps> = (args) => <Card {...args} />;
 
 export const Primary = Template.bind({});
 Primary.args = {
+  backgroundColor: 'blue.100',
   children: <p>This is a test component</p>
 };
 
